@@ -12,7 +12,7 @@ function getTaskFromUserInput() {
   const dueDate = document.getElementById("dueDate").value;
   const dueTime = document.getElementById("dueTime").value;
 
-  const timestamp = new Date(dueDate + " " + dueTime);
+  const timestamp = new Date(dueDate + "T" + dueTime+"Z");
 
   const task = {
     description: taskDescription,
@@ -242,7 +242,7 @@ function validateUserInput(task) {
     // is true: time overdue too
 
     const currentTimestamp = new Date();
-    const dueTimestamp = new Date(`${dueDate} ${dueTime}`);
+    const dueTimestamp = new Date(`${dueDate}T${dueTime}Z`);
 
 
     if (currentTimestamp.getTime() > dueTimestamp.getTime()) {
