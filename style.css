@@ -1,0 +1,156 @@
+body {
+  background-image: url("./media/tile.jpg");
+}
+
+.main-header {
+  font-family: 'Rock Salt', "Papyrus", cursive;
+  margin: 0.5em;
+  color: var(--bs-gray-dark);
+  text-shadow: -1px -1px 0 white, 3px 3px 2px black;
+
+}
+
+.form-background {
+  /* adding 2 images means the first will repeat only once and the second will repeat throughout the page */
+  background-image: url('./media/formbg.jpg'), url("./media/formbg_lineless.jpg");
+  /* background-size: 100% auto;
+  background-repeat: repeat-y; */
+  background-repeat: repeat-y, repeat;
+  box-shadow: 0 4px 7px 2px rgba(0, 0, 0, 0.5);
+  border-right: 5px outset;
+  border-bottom: 5px outset;
+}
+
+.form-container {
+  margin-left: 75px;
+  /* the left edge for the notebook so that the red line isnt written on */
+  font-family: "Kalam",
+    "Century Gothic",
+    "CenturyGothic",
+    "AppleGothic",
+    sans-serif;
+}
+
+.form-container label {
+  font-weight: bolder;
+
+}
+
+.form-container button,
+.form-container .form-control {
+  font-weight: lighter;
+
+}
+
+.form-container .form-control {
+
+  background-color: rgba(0, 0, 0, 0.4);
+  color-scheme: dark;
+  /* color: yellow; */
+}
+
+.form-container .form-control,
+.form-container .form-control::placeholder {
+  color: white;
+  /* text-shadow: 0 0 20px black; */
+}
+
+.form-control.is-invalid {
+  border: none;
+  background-color: rgba(48, 0, 0, 0.4);
+  padding-right: 0.75em;
+  background-image: none;
+}
+
+.note {
+  width: 200px;
+  height: 250px;
+  background-image: url(./media/notebg.png);
+  padding: 35px 30px 10px 15px;
+
+}
+
+.note-description {
+  overflow-y: auto;
+  word-wrap: break-word;
+  width: 150px;
+  height: 150px;
+  display: inline-block;
+  font-family: 'Dekko', "Papyrus", cursive;
+  font-size: larger;
+  /* font-weight: bold; */
+  /* padding: 0; */
+  /* margin-top: 20px; */
+}
+
+.note-timestamp {
+  color: var(--bs-gray-dark);
+  opacity: 0.9;
+  font-family: 'Dekko',
+    "monaco",
+    "Consolas",
+    "Lucida Console",
+    monospace;
+}
+
+.note *:not(.remove-button) {
+  border: none;
+  background: none;
+}
+
+.remove-button {
+  top: 20px;
+  left: 5px;
+  padding: 0em;
+  height: 2em;
+  width: 2em;
+  font-size: 0.75em;
+  opacity: 0.5;
+
+  visibility: hidden;
+}
+
+.remove-button:hover {
+  opacity: 1;
+}
+
+/* show button on hover */
+.note:hover .remove-button {
+  visibility: visible;
+}
+
+
+/* note scrollbar */
+.note-description::-webkit-scrollbar {
+  width: 0.45em;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.note-description::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 2em;
+  height: 30px;
+}
+
+.note-description::-webkit-scrollbar-track-piece {
+  display: none;
+}
+
+
+.fade-in {
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 1s;
+}
+
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
