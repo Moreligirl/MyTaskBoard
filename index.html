@@ -73,9 +73,9 @@
           <label for="taskDescription" class="col-form-label col-md-2 fs-5 me-3">Description:</label>
           <div class="col">
             <textarea class="form-control" id="taskDescription" placeholder="Don't forget to..."
-              aria-label="Task Description" rows="3" required></textarea>
+              aria-label="Description for your Task" rows="3" required></textarea>
 
-            <div class="invalid-feedback">
+            <div class="invalid-feedback" id="taskDescriptionFeedback">
               Please provide a description for your task.
             </div>
           </div>
@@ -113,7 +113,7 @@
           <!-- CLEAR BUTTON -->
           <div class="col-auto">
             <button class="btn btn-lg btn-danger" onclick="clearUserInput()"><i class="bi bi-trash3"></i>
-              Clear Fields</button>
+              Clear</button>
           </div>
           <!-- CLEAR BUTTON END -->
 
@@ -122,7 +122,7 @@
           <!-- ADD BUTTON -->
           <div class="col-auto">
             <button class="btn btn-lg btn-primary" onclick="addTask()"><i class="bi bi-plus-circle"></i>
-              Add Task</button>
+              Add</button>
           </div>
           <!-- ADD BUTTON END -->
 

@@ -7,7 +7,6 @@ body {
   margin: 0.5em;
   color: var(--bs-gray-dark);
   text-shadow: -1px -1px 0 white, 3px 3px 2px black;
-
 }
 
 .form-background {
