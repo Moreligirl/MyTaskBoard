@@ -1,4 +1,4 @@
-/* Basic Functions */
+// Basic Functions
 
 function getTaskFromUserInput() {
   const taskDescription = document.getElementById("taskDescription").value;
@@ -48,44 +48,24 @@ function removeTask(event) {
 // Functions responsible for DOM and visual display
 
 function addTaskToDOM(task) {
-  // the container for placing all the task notes inside
-  const taskContainer = document.getElementById("taskContainer");
+  // config
+  const noteTag = "div";
+  const noteClasses = ["col-auto", "m-3", "note", "position-relative", "fade-in"];
+  // create the note contents
+  const taskRemoveButton = createTaskRemoveButton();
+  const taskDescriptionElement = createTaskDescriptionElement(task.description);
+  const dueTimeElement = createDueTimeElement(task.dueDate, task.dueTime);
 
   // create a task note element
-  const taskNote = document.createElement("div");
-  taskNote.classList.add("col-auto", "m-3", "note", "position-relative", "fade-in"); // add classes
-
-  // create the remove button
-  const removeTaskButton = document.createElement("button");
-  removeTaskButton.classList.add("position-absolute", "remove-button", "btn", "btn-dark"); // add classes
-  removeTaskButton.onclick = removeTask; // add button action
-  removeTaskButton.innerHTML = `<i class="bi bi-x-lg"></i>`; // icon
-  // add to the note element
-  taskNote.appendChild(removeTaskButton);
-
-  // create the text section for the task description
-  const taskDescriptionText = document.createElement("div");
-  taskDescriptionText.classList.add("note-description", "p-0", "overflow-auto"); // classes
-  taskDescriptionText.innerText = task.description; // add the task description text
-  // add to the note element
-  taskNote.appendChild(taskDescriptionText);
-
-  // create the text section for the date
-  const taskDueDateText = document.createElement("div");
-  taskDueDateText.classList.add("p-0", "note-timestamp"); // classes
-  taskDueDateText.innerText = task.dueDate; // add the task's due date inside the date element
-  // add to note
-  taskNote.appendChild(taskDueDateText);
-
-  // create the text section for the time
-  const taskDueTimeText = document.createElement("div");
-  taskDueTimeText.classList.add("p-0", "note-timestamp");
-  taskDueTimeText.innerText = task.dueTime; // add the task's due time inside the time element
-  // add to note
-  taskNote.appendChild(taskDueTimeText);
+  const noteElement = document.createElement(noteTag);
+  noteElement.classList.add(...noteClasses);
+  // add content
+  noteElement.appendChild(taskRemoveButton);
+  noteElement.appendChild(taskDescriptionElement);
+  noteElement.appendChild(dueTimeElement);
 
   // add finished note to container
-  taskContainer.appendChild(taskNote);
+  document.getElementById("taskContainer").appendChild(noteElement);
 }
 
 function removeTaskFromDOM(index) {
@@ -111,8 +91,53 @@ function displayAllTasks() {
 }
 
 
+function createTaskDescriptionElement(taskDescription) {
+  // quick configuration for easy editing
+  const containerTag = "div";
+  const containerClasses = ["note-description", "overflow-auto"];
+  const textContent = taskDescription;
 
-/* functions responsible for local storage */
+  // create element
+  const taskDescriptionElement = document.createElement(containerTag);
+  taskDescriptionElement.classList.add(...containerClasses); // classes
+  taskDescriptionElement.innerText = textContent; // add the task description text
+
+  return taskDescriptionElement;
+}
+
+function createDueTimeElement(dueDate, dueTime) {
+  // quick configuration for easy editing
+  const containerTag = "div";
+  const containerClasses = ["note-timestamp"];
+  const textContent = dueDate + "\n" + dueTime;
+
+  // create element
+  const dueTimeElement = document.createElement(containerTag);
+  dueTimeElement.classList.add(...containerClasses); // classes
+  dueTimeElement.innerText = textContent; // add the task description text
+
+  return dueTimeElement;
+}
+
+function createTaskRemoveButton() {
+  // quick configuration for easy editing
+  const buttonTag = "button";
+  const buttonClasses = ["position-absolute", "remove-button", "btn", "btn-dark"];
+  const buttonIcon = "x-lg";
+  const buttonAction = removeTask;
+
+  //
+  const taskRemoveButton = document.createElement(buttonTag);
+  taskRemoveButton.classList.add(...buttonClasses);
+  taskRemoveButton.innerHTML = `<i class="bi bi-${buttonIcon}"></i>`; // icon
+  taskRemoveButton.onclick = buttonAction;
+
+  return taskRemoveButton;
+}
+
+
+
+// functions responsible for local storage
 
 function updateTaskListInLocalStorage(taskList) {
 
@@ -306,18 +331,8 @@ function setMinimumDateForToday() {
   document.getElementById("dueDate").setAttribute("min", minimumDate);
 }
 
-function refocusOnTaskDescriptionInputField(event) {
-  // we only want the focus to happen if the user is not currently focused on another input field
-  if (!event.target.matches(".form-control")) {
-    // user is not focused on another input field
-    document.getElementById("taskDescription").focus();
-  }
-}
 
-
-
-// event listeners
+// page setup
 
 document.addEventListener("DOMContentLoaded", displayAllTasks);
 document.addEventListener("DOMContentLoaded", setMinimumDateForToday);
-document.addEventListener("keydown", refocusOnTaskDescriptionInputField);

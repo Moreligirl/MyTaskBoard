@@ -3,7 +3,7 @@ body {
 }
 
 .main-header {
-  font-family: 'Rock Salt', "Papyrus", cursive;
+  font-family: "Rock Salt", "Papyrus", cursive;
   margin: 0.5em;
   color: var(--bs-gray-dark);
   text-shadow: -1px -1px 0 white, 3px 3px 2px black;
@@ -11,9 +11,7 @@ body {
 
 .form-background {
   /* adding 2 images means the first will repeat only once and the second will repeat throughout the page */
-  background-image: url('./media/formbg.jpg'), url("./media/formbg_lineless.jpg");
-  /* background-size: 100% auto;
-  background-repeat: repeat-y; */
+  background-image: url("./media/formbg.jpg"), url("./media/formbg_lineless.jpg");
   background-repeat: repeat-y, repeat;
   box-shadow: 0 4px 7px 2px rgba(0, 0, 0, 0.5);
   border-right: 5px outset;
@@ -21,52 +19,48 @@ body {
 }
 
 .form-container {
-  margin-left: 75px;
-  /* the left edge for the notebook so that the red line isnt written on */
   font-family: "Kalam",
     "Century Gothic",
     "CenturyGothic",
     "AppleGothic",
     sans-serif;
+  /* the left edge for the notepad so that the red line isnt written on */
+  margin-left: 75px;
 }
 
 .form-container label {
   font-weight: bolder;
-
 }
 
 .form-container button,
 .form-container .form-control {
   font-weight: lighter;
-
 }
 
 .form-container .form-control {
-
   background-color: rgba(0, 0, 0, 0.4);
   color-scheme: dark;
-  /* color: yellow; */
 }
 
 .form-container .form-control,
 .form-container .form-control::placeholder {
   color: white;
-  /* text-shadow: 0 0 20px black; */
 }
 
 .form-control.is-invalid {
+  /* change BootStrap's default styling */
   border: none;
   background-color: rgba(48, 0, 0, 0.4);
   padding-right: 0.75em;
   background-image: none;
 }
 
+
 .note {
   width: 200px;
   height: 250px;
-  background-image: url(./media/notebg.png);
+  background-image: url("./media/notebg.png");
   padding: 35px 30px 10px 15px;
-
 }
 
 .note-description {
@@ -75,26 +69,18 @@ body {
   width: 150px;
   height: 150px;
   display: inline-block;
-  font-family: 'Dekko', "Papyrus", cursive;
+  font-family: "Dekko", "Papyrus", cursive;
   font-size: larger;
-  /* font-weight: bold; */
-  /* padding: 0; */
-  /* margin-top: 20px; */
 }
 
 .note-timestamp {
   color: var(--bs-gray-dark);
   opacity: 0.9;
-  font-family: 'Dekko',
+  font-family: "Dekko",
     "monaco",
     "Consolas",
     "Lucida Console",
     monospace;
-}
-
-.note *:not(.remove-button) {
-  border: none;
-  background: none;
 }
 
 .remove-button {
@@ -135,7 +121,7 @@ body {
   display: none;
 }
 
-
+/* CSS animation for notes */
 .fade-in {
   opacity: 1;
   animation-name: fadeInOpacity;
